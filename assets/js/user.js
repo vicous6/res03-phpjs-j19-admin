@@ -78,12 +78,15 @@ function displayUpdateText(){
 .then(response => response.json())
 .then(data => {
     console.log(data);
-    
+    let id = document.getElementById('id')
     let username = document.getElementById('username')
     let email = document.getElementById('email')
     let firstName = document.getElementById('firstName')
     let lastName = document.getElementById('lastName')
-    
+   
+   
+   console.log(data.id)
+    id.value=data.id 
     username.value=data.username
     email.value=data.email
     firstName.value=data.firstName

@@ -56,10 +56,13 @@ fetch('https://victoroustiakine.sites.3wa.io/res03-php-j19-api/users')
      
         let tr1 = document.createElement("tr")
        tr1.appendChild(_id)
+      
        tr1.appendChild(_username)
        tr1.appendChild(_firstName)
        tr1.appendChild(_lastName)
-       tr1.appendChild(_email)
+        tr1.appendChild(_email)
+        
+        
         tr1.appendChild(_user)
          tr1.appendChild(_modif)
           tr1.appendChild(_delete)
@@ -108,6 +111,7 @@ for(let elem of buttonUser){
 }
  }
  
+ 
  function updateUserButton(){
    
  let buttonUser = document.getElementsByClassName("update");
@@ -128,7 +132,38 @@ for(let elem of buttonUser){
  }
  function deleteUserButton(){
   
+  let buttonUser = document.getElementsByClassName("delete");
+ 
+ console.log(buttonUser);
+
+ for (let elem of buttonUser) {
+
+  elem.addEventListener("click", function() {
+   let route = (elem.getAttribute("id"));
+   // console.log(buttonUser[i].className)
+   localStorage.setItem("delete", route);
+
+
   
+   console.log(route)
+
+fetch(`https://victoroustiakine.sites.3wa.io/res03-php-j19-api/delete-user/${route}`)
+.then(response => response.json())
+.then(data => {
+    console.log(data);
+});
+
+
+
+    let truc = setTimeout(window.location.href = "https://victoroustiakine.sites.3wa.io/res03-phpjs-j19-admin/users.html", "6000")
+
+
+
+   });
+
+ 
+ }
+
  }
 
 export { getAll };
