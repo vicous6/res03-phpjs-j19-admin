@@ -37,9 +37,12 @@ fetch('https://victoroustiakine.sites.3wa.io/res03-php-j19-api/users')
          button2.textContent="X"
           button3.textContent="X"
           
-          button1.classList.add(id)
-           button2.classList.add(id)
-            button3.classList.add(id)
+          button1.setAttribute("id",id)
+           button1.classList.add("user")
+           button2.classList.add("update")
+             button2.setAttribute("id",id)
+            button3.classList.add("delete")
+              button3.setAttribute("id",id)
         
         _user.appendChild(button1)
         _modif.appendChild(button2)
@@ -69,4 +72,69 @@ fetch('https://victoroustiakine.sites.3wa.io/res03-php-j19-api/users')
     
 }
 
+function routingCreate(){
+      let create = document.getElementById("createUser")
+ create.addEventListener("click",function(){
+     
+     window.location.href="https://victoroustiakine.sites.3wa.io/res03-phpjs-j19-admin/create-user.html"
+ })
+ }
+ function routingHomepage(){
+      let home = document.getElementById("homepage")
+ home.addEventListener("click",function(){
+     
+     window.location.href="https://victoroustiakine.sites.3wa.io/res03-phpjs-j19-admin/users.html"
+ })
+ }
+
+ 
+ function getUserButton(){
+  
+  
+ let buttonUser = document.getElementsByClassName("user");
+ 
+ console.log(buttonUser);
+
+ console.log("pk");
+for(let elem of buttonUser){
+    
+        elem.addEventListener("click",function(){
+         let route = (elem.getAttribute("id"))
+         // console.log(buttonUser[i].className)
+        localStorage.setItem("user", route);
+
+         window.location.href=`https://victoroustiakine.sites.3wa.io/res03-phpjs-j19-admin/user.html`
+     })
+}
+ }
+ 
+ function updateUserButton(){
+   
+ let buttonUser = document.getElementsByClassName("update");
+ 
+ console.log(buttonUser);
+
+ console.log("pk");
+for(let elem of buttonUser){
+    
+        elem.addEventListener("click",function(){
+         let route = (elem.getAttribute("id"))
+         // console.log(buttonUser[i].className)
+        localStorage.setItem("update", route);
+
+         window.location.href=`https://victoroustiakine.sites.3wa.io/res03-phpjs-j19-admin/update-user.html`
+     })
+}
+ }
+ function deleteUserButton(){
+  
+  
+ }
+
 export { getAll };
+export { routingCreate };
+export { routingHomepage};
+// export { routingUpdate};
+export { getUserButton };
+export { updateUserButton };
+export { deleteUserButton };
